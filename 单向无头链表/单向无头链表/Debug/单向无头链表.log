@@ -1,0 +1,4 @@
+﻿  SList.c
+C:\Users\liyuc\source\repos\单向无头链表\单向无头链表\SList.c(173): warning C4033: “SListEmpty”必须返回值
+C:\Users\liyuc\source\repos\单向无头链表\单向无头链表\SList.c(175): warning C4716: “SListEmpty”: 必须返回一个值
+  单向无头链表.vcxproj -> C:\Users\liyuc\source\repos\单向无头链表\Debug\单向无头链表.exe

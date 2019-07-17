@@ -1,0 +1,3 @@
+﻿  lyc.c
+C:\Users\liyuc\source\repos\unsigned int reverse_bit(unsigned int value)\unsigned int reverse_bit(unsigned int value)\lyc.c(16): warning C4715: “reverse_bit”: 不是所有的控件路径都返回值
+  unsigned int reverse_bit(unsigned int value).vcxproj -> C:\Users\liyuc\source\repos\unsigned int reverse_bit(unsigned int value)\Debug\unsigned int reverse_bit(unsigned int value).exe

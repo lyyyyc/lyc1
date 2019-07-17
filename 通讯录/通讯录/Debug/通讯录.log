@@ -1,0 +1,10 @@
+﻿  lyc.c
+C:\Users\liyuc\source\repos\通讯录\通讯录\lyc.c(36): warning C4098: “Menu”:“void”函数返回值
+C:\Users\liyuc\source\repos\通讯录\通讯录\lyc.c(103): warning C4305: “=”: 从“int”到“char”截断
+C:\Users\liyuc\source\repos\通讯录\通讯录\lyc.c(104): warning C4305: “=”: 从“int”到“char”截断
+C:\Users\liyuc\source\repos\通讯录\通讯录\lyc.c(123): warning C4013: “menu”未定义；假设外部返回 int
+C:\Users\liyuc\source\repos\通讯录\通讯录\lyc.c(124): warning C4013: “size”未定义；假设外部返回 int
+C:\Users\liyuc\source\repos\通讯录\通讯录\lyc.c(124): warning C4018: “>”: 有符号/无符号不匹配
+lyc.obj : error LNK2019: 无法解析的外部符号 _menu，该符号在函数 _main 中被引用
+lyc.obj : error LNK2019: 无法解析的外部符号 _size，该符号在函数 _main 中被引用
+C:\Users\liyuc\source\repos\通讯录\Debug\通讯录.exe : fatal error LNK1120: 2 个无法解析的外部命令
