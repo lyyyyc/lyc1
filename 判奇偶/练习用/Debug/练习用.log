@@ -1,0 +1,15 @@
+﻿生成启动时间为 2019/4/5 22:08:51。
+     1>项目“c:\Users\liyuc\documents\visual studio 2013\Projects\练习用\练习用\练习用.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         D:\vs2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt "奇偶判断.c"
+         奇偶判断.c
+       Link:
+         D:\vs2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\users\liyuc\documents\visual studio 2013\Projects\练习用\Debug\练习用.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\users\liyuc\documents\visual studio 2013\Projects\练习用\Debug\练习用.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\users\liyuc\documents\visual studio 2013\Projects\练习用\Debug\练习用.lib" /MACHINE:X86 Debug\lyc.obj
+         "Debug\奇偶判断.obj"
+     1>奇偶判断.obj : error LNK2005: _main 已经在 lyc.obj 中定义
+     1>c:\users\liyuc\documents\visual studio 2013\Projects\练习用\Debug\练习用.exe : fatal error LNK1169: 找到一个或多个多重定义的符号
+     1>已完成生成项目“c:\Users\liyuc\documents\visual studio 2013\Projects\练习用\练习用\练习用.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.45
