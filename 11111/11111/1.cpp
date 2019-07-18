@@ -892,6 +892,7 @@ int main()
 }
 #endif
 
+#if 0
 class Date
 {
 public:
@@ -908,3 +909,82 @@ private:
 	int _month;
 	int _day;
 };
+#endif
+
+#if 0
+void swap_int(int* a, int* b)
+{
+	*a = *a + *b;
+	*b = *a - *b;
+	*a = *a - *b;
+}
+int main()
+{
+	int a, b;
+	swap_int(*a,*b);
+	return 0;
+
+}
+#endif
+
+#if 0
+void print(char* s)
+{
+	if (*s)
+	{
+		print(++s);	
+		printf("%c", *s);
+	}
+}
+int main()
+{
+	char str[] = "geneius";
+	print(str);
+	return 0;
+}
+#endif
+
+#if 0
+int main()
+{
+	const int a = 10;
+	int* p = (int*)(&a);
+	*p = 20;
+	cout << a << " " << *p << endl;
+	return 0;
+}
+#endif
+
+
+#if 0
+int main()
+{
+	int n;
+	cin >> n;
+	int i = 2;
+	int sum = 0;
+	int count = 0;
+	while (i<=n)
+	{
+		for (i; i < n; ++i)
+		{
+			for (int j = 1; j < i; ++j)
+			{
+				if (i % j == 0)
+				{
+					sum += j;
+				}
+			}
+			if (sum == i)
+			{
+				count++;
+			}
+			sum = 0;
+			i += 1;
+		}
+	}
+	cout << count << endl;
+	return 0;
+}
+#endif
+
