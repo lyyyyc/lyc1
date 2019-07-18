@@ -988,3 +988,132 @@ int main()
 }
 #endif
 
+#if 0
+class Date
+{
+public:
+	Date(int year, int month, int day)
+		:_year(year)
+		,_month(month)
+		,_day(day)
+	{}
+private:
+	int _year;
+	int _month;
+	int _day;
+};
+#endif
+
+#if 0
+class A
+{
+public:
+	A(int a,int b)
+		:_a(a)
+		,_b(b)
+		,_n(10)
+	{}
+private:
+	A _a;//没有默认构造函数
+	int& _b;//引用
+	const int _n;//const
+};
+#endif
+
+#if 0
+class B
+{
+public:
+	B(int b=0)
+		:_b(b)
+	{}
+	int _b;
+};
+class A
+{
+public:
+	void Print()
+	{
+		cout << a << endl;
+		cout << b._b << endl;
+		cout << p << endl;
+	}
+private:
+	//非静态成员变量，可以在成员声明时给缺省值
+	int a = 10;
+	B b = 20;
+	int* p = (int*)malloc(4);
+	static int n;
+};
+int A::n = 10;//静态成员变量在类外初始化
+int main()
+{
+	A a;
+	a.Print();
+	return 0;
+}
+#endif
+
+#if 0
+class Date;   // 前置声明 
+class Time 
+{   
+	friend class Date;   
+	// 声明日期类为时间类的友元类，则在日期类中就直接访问Time类中的私有成员变 量 
+public:   
+	Time(int hour, int minute, int second)       
+		: _hour(hour),
+		,_minute(minute),
+		 _second(second)   
+	{}   
+private:   
+	int _hour;   
+	int _minute;   
+	int _second; 
+};
+class Date 
+{
+public:   
+	Date(int year = 1900, int month = 1, int day = 1) 
+		: _year(year), 
+		_month(month), 
+		_day(day) 
+	{}      
+	void SetTimeOfDate(int hour, int minute, int second) 
+	{      
+		// 直接访问时间类私有的成员变量       
+		_t._hour = hour;       
+		_t._minute = minute;       
+		_t.second = second;   
+	}   
+private:   
+	int _year;   
+	int _month;   
+	int _day;   
+	Time _t; 
+}; 
+#endif
+
+class A
+{
+public:
+	class B
+	{
+	public:
+		void foo(const A& a)
+		{
+			cout << k << endl;
+			cout << a.h << endl;
+		}
+	};
+private:
+	static int k;
+	int h;
+};
+int A::k = 1;
+int main()
+{
+	A::B b;
+	b.foo(A());
+	return 0;
+}
