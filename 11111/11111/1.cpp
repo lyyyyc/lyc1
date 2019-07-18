@@ -2,6 +2,7 @@
 #include<iostream>
 using namespace std;
 #include<string>
+#include<assert.h>
 
 #if 0
 void Findnum(string str)
@@ -148,6 +149,7 @@ int main()
 }
 #endif
 
+#if 0
 //判断一个字符串是不是回文串
 bool is_reback(string& str)
 {
@@ -172,6 +174,7 @@ bool is_reback(string& str)
 	else
 		return false;*/
 }
+#endif
 
 #if 0
 int reback_str_count()
@@ -652,6 +655,7 @@ int main()
 }
 #endif
 
+#if 0
 #include<fstream>
 //使用文件IO流用文本及二进制方式演示读写配置文件
 struct ServerInfo
@@ -720,3 +724,187 @@ int main()
 
 	return 0;
 }
+#endif
+
+#if 0
+class Time
+{
+public:
+	Time()
+	{
+		_hour = 0;
+		_minute = 0;
+		_second = 0;
+	}
+private:
+	int _hour;
+	int _minute;
+	int _second;
+};
+class Date
+{
+public:
+	//无参构造函数
+	Date()
+	{}
+	//含参构造函数
+	Date(int year, int month, int day)
+	{
+		_year = year;
+		_month = month;
+		_day = day;
+	}
+private:
+	//基本类型（内置类型）
+	int _year;
+	int _month;
+	int _day;
+	//自定义类型
+	Time _t;
+};
+int main()
+{
+	Date d1;//调用无参构造函数
+	Date d2(2019, 1, 1);//调用含参构造函数
+	Date d3();//声明了d3函数，该函数无参，返回一个日期类型的对象
+}
+#endif
+
+#if 0
+typedef int DataType;
+class SeqList
+{
+public:
+	SeqList(int capacity = 10)
+	{
+		_pData = (DataType*)malloc(capacity * sizeof(DataType));
+		assert(_pData);
+		_size = 0;
+		_capacity = capacity;
+	}
+	~SeqList()
+	{
+		if (_pData)
+		{
+			free(_pData);
+			_pData = NULL;
+			_size = 0;
+			_capacity = 0;
+		}
+	}
+private:
+	int* _pData;
+	int _size;
+	int _capacity;
+};
+#endif
+
+#if 0
+class Date
+{
+public:
+	Date(int year=2019, int month=1, int day=1)
+	{
+		_year = year;
+		_month = month;
+		_day = day;
+	}
+private:
+	int _year;
+	int _month;
+	int _day;
+};
+int main()
+{
+	Date d1;
+	Date d2(d1);
+	return 0;
+}
+#endif
+
+#if 0
+//全局的operator==
+class Date
+{
+public:
+	Date(int year = 2019, int month = 1, int day = 1)
+	{
+		_year = year;
+		_month = month;
+		_day = day;
+	}
+public:
+	int _year;
+	int _month;
+	int _day;
+};
+bool operator==(const Date& d1, const Date& d2)
+{
+	return d1._year == d2._year
+	&& d1._month == d2._month
+	&& d1._day == d2._day;
+}
+int main()
+{
+	Date d1(2019, 1, 1);
+	Date d2(2019, 1, 2);
+	cout << (d1 == d2) << endl;
+	return 0;
+}
+#endif
+
+#if 0
+class Date
+{
+public:
+	Date(int year = 2019, int month = 1, int day = 1)
+	{
+		_year = year;
+		_month = month;
+		_day = day;
+	}
+	/*Date(const Date& d)
+	{
+		_year = d._year;
+		_month = d._month;
+		_day = d._day;
+	}
+	Date& operator=(const Date& d)
+	{
+		if (this != &d)
+		{
+			_year = d._year;
+			_month = d._month;
+			_day = d._day;
+		}
+	}*/
+private:
+	int _year;
+	int _month;
+	int _day;
+};
+int main()
+{
+	Date d1;
+	Date d2(2019, 10, 10);
+	d1 = d2;
+	return 0;
+}
+#endif
+
+class Date
+{
+public:
+	Date* operator&()
+	{
+		return this;
+	}
+	const Date* operator()const
+	{
+		return this;
+	}
+private:
+	int _year;
+	int _month;
+	int _day;
+};
