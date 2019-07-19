@@ -1094,6 +1094,7 @@ private:
 }; 
 #endif
 
+#if 0
 class A
 {
 public:
@@ -1115,5 +1116,43 @@ int main()
 {
 	A::B b;
 	b.foo(A());
+	return 0;
+}
+#endif
+
+#if 0
+int main()
+{
+	char* ptr;
+	char a[] = "sdnnknkadsl";
+	ptr = a;
+	ptr += 5;
+	return 0;
+}
+#endif
+
+class A
+{
+public:
+	int _a;
+};
+class B:public A
+{
+public:
+	int _b;
+};
+class C:public A
+{
+public:
+	int _c;
+};
+class D:public B,public C
+{
+public:
+	int _d;
+};
+int main()
+{
+	cout << sizeof(D) << endl;
 	return 0;
 }
