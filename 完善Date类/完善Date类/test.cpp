@@ -26,13 +26,17 @@ public:
 		}
 		return *this;
 	}
-	Date& operator+(int days)
+	Date operator+(int days)
 	{
-		
+		Date temp(*this);
+		temp._day -= days;
+		return temp;
 	}
-	Date& operator-(int days)
+	Date operator-(int days)
 	{
-
+		Date temp(*this);
+		temp._day += days;
+		return temp;
 	}
 	int operator-(const Date& d)
 	{
@@ -40,21 +44,27 @@ public:
 			&& _month - d._month
 			&& _day - d._day;
 	}
-	Date& operator++()
+	Date& operator++()//Ç°ÖÃ++
 	{
-
+		_day += 1;
+		return *this;
 	}
-	Date operator++(int)
+	Date operator++(int)//ºóÖÃ++
 	{
-
+		Date temp(*this);
+		_day += 1;
+		return temp;
 	}
 	Date& operator--()
 	{
-
+		_day -= 1;
+		return *this;
 	}
 	Date operator--(int)
 	{
-
+		Date temp(*this);
+		_day -= 1;
+		return temp;
 	}
 	bool operator>(const Date& d)const
 	{
