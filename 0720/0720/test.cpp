@@ -86,6 +86,7 @@ int main()
 }
 #endif
 
+#if 0
 struct ListNode
 {
 	ListNode* _next;
@@ -131,5 +132,39 @@ private:
 int main()
 {
 	List l;
+	return 0;
+}
+#endif
+
+#include<string>
+int circu(const string& s)
+{
+	size_t begin = 0;
+	size_t end = s.size() - 1;
+	while (begin < end)
+	{
+		if (s[begin] != s[end])
+		{
+			return false;
+		}
+		begin++;
+		end--;
+	}
+	return true;
+}
+int main()
+{
+	string s1, s2;
+	getline(cin, s1);
+	getline(cin, s2);
+	size_t count = 0;
+	for (size_t i = 0; i < s1.size(); ++i)
+	{
+		string s = s1;
+		s.insert(i, s2);
+		if (circu(s))
+			++count;
+	}
+	cout << count << endl;
 	return 0;
 }
