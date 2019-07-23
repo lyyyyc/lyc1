@@ -136,6 +136,7 @@ int main()
 }
 #endif
 
+#if 0
 #include<string>
 int circu(const string& s)
 {
@@ -168,3 +169,170 @@ int main()
 	cout << count << endl;
 	return 0;
 }
+#endif
+
+#if 0
+template<class T>
+void Swap(T& left, T& right)
+{
+	T tmp = left;
+	left = right;
+	right = tmp;
+}
+#endif
+
+#if 0
+int Add(int left, int right)
+{
+	return left + right;
+}
+template<class T>
+T Add( T left,  T right)
+{
+	return left + right;
+}
+int main()
+{
+	Add(1, 2);//与非模板函数匹配，编译器不需要特化
+	Add(1,2.0);//模板函数可以生成更加匹配的版本，编译器根据实参生成更加匹配的Add函数
+	return 0;
+}
+#endif
+
+#include<string>
+
+#if 0
+int main()
+{
+	string s;
+	size_t begin = 0;
+	size_t end = s.size() - 1;
+	while (begin < end)
+	{
+		swap(s[begin], s[end]);
+		begin++;
+		end--;
+	}
+	return 0;
+}
+#endif
+
+#if 0
+int main()
+{
+	string s1, s2;
+	getline(cin, s1);
+	getline(cin, s2);
+	size_t begin1 = 0;
+	size_t begin2 = 0;
+	int count = 0;
+	while (s1[begin1] < s1.size())
+	{
+		if (s1[begin1] == s2[begin2])
+		{
+			count++;
+			begin1++;
+			begin2++;
+		}
+		else
+		{
+			begin1++;
+		}
+	}
+	cout << count << endl;
+	return 0;
+}
+#endif
+
+#if 0
+int main()
+{
+	string s("hello world");  
+	cout << "s:"<<s << endl;
+	cout << "size:"<<s.size() << endl;
+	cout << "length:"<<s.length() << endl;
+	cout << "capacity"<<s.capacity() << endl;
+	cout << endl;
+	//清空s中字符串，size清0，不改变底层空间大小
+	s.clear();
+	cout << "size" << s.size() << endl;
+	cout << "capacity:" << s.capacity() << endl;
+	cout << endl;
+	//将s中有效字符个数增加到10个，多出位置用'a'进行填充
+	s.resize(10, 'a');
+	cout << "s:" << s << endl;
+	cout << "size" << s.size() << endl;
+	cout << "capacity:" << s.capacity() << endl;
+	cout << endl;
+	//将s中有效字符个数增加到15个，多出的位置用'\0'进行填充
+	s.resize(15);
+	cout << "s:" << s << endl;
+	cout << "size" << s.size() << endl;
+	cout << "capacity:" << s.capacity() << endl;
+	cout << endl;
+	//将s中有效字符个数减少至5个
+	s.resize(5);
+	cout << "s:" << s << endl;
+	cout << "size" << s.size() << endl;
+	cout << "capacity:" << s.capacity() << endl;
+	cout << endl;
+	//将s进行扩容，且不改变有效字符个数
+	s.reserve(100);
+	cout << "s:" << s << endl;
+	cout << "size" << s.size() << endl;
+	cout << "capacity:" << s.capacity() << endl;
+	cout << endl;
+	//函数参数小于空间大小时，不会将空间缩小
+	s.reserve(50);
+	cout << "size" << s.size() << endl;
+	cout << "capacity:" << s.capacity() << endl;
+	cout << endl;
+	return 0;
+}
+#endif
+
+#if 0
+	int main()
+	{
+		string s("hello world");
+		//3种遍历方式
+		//1.for+operator[]
+		for (size_t i = 0; i < s.size(); ++i)
+			cout << s[i] ;
+		cout << endl;
+		//2.迭代器
+		auto it = s.begin();
+		while (it != s.end())
+		{
+			cout << *it ;
+			++it;
+		}
+		cout << endl;
+		auto rit = s.rbegin();
+		while (rit != s.rend())
+		{
+			cout << *rit ;
+			++rit;
+		}
+		cout << endl;
+		return 0;
+	}
+#endif
+
+#if 0
+int main()
+{
+	string s;
+	s.push_back(' ');//在s后插入空格
+	s.append("hello");//在s后追加字符串"hello"
+	s += 'b';//在s后追加一个字符'b'
+	s += "it";//在s后追加字符串"it"
+	cout << s << endl;
+	cout << s.c_str << endl;//以C语言方式打印字符串
+	cout << endl;
+	size_t pos = s.find('b');
+	s.insert(pos, 'a');
+
+	return 0;
+}
+#endif
