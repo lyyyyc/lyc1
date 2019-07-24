@@ -1,8 +1,2 @@
 ﻿  test.cpp
-C:\Users\liyuc\Desktop\git\lyc1\0720\0720\test.cpp(331,18): error C3867:  “std::basic_string<char,std::char_traits<char>,std::allocator<char>>::c_str”: 非标准语法；请使用 "&" 来创建指向成员的指针
-C:\Users\liyuc\Desktop\git\lyc1\0720\0720\test.cpp(334,19): error C2664:  “std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>> std::basic_string<_Elem,std::char_traits<char>,std::allocator<char>>::insert(const std::_String_const_iterator<std::_String_val<std::_Simple_types<_Elem>>>,const unsigned int,const _Elem)”: 无法将参数 1 从“size_t”转换为“const std::_String_const_iterator<std::_String_val<std::_Simple_types<_Elem>>>”
-C:\Users\liyuc\Desktop\git\lyc1\0720\0720\test.cpp(334,19): error C2664:         with
-C:\Users\liyuc\Desktop\git\lyc1\0720\0720\test.cpp(334,19): error C2664:         [
-C:\Users\liyuc\Desktop\git\lyc1\0720\0720\test.cpp(334,19): error C2664:             _Elem=char
-C:\Users\liyuc\Desktop\git\lyc1\0720\0720\test.cpp(334,19): error C2664:         ]
-C:\Users\liyuc\Desktop\git\lyc1\0720\0720\test.cpp(334,19): message :  无构造函数可以接受源类型，或构造函数重载决策不明确
+  0720.vcxproj -> C:\Users\liyuc\Desktop\git\lyc1\0720\Debug\0720.exe

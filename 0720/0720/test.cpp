@@ -336,3 +336,229 @@ int main()
 	return 0;
 }
 #endif
+
+#if 0
+class Person
+{
+public:
+	virtual void BuyTicket()
+	{
+		cout << "all" << endl;
+	}
+};
+class Student :public Person
+{
+public:
+	virtual void BuyTicket()
+	{
+		cout << "half" << endl;
+	}
+};
+void Func(Person& p)
+{
+	p.BuyTicket();
+}
+int main()
+{
+	Person ps;
+	Student st;
+	Func(ps);
+	Func(st);
+	return 0;
+}
+#endif
+
+#if 0
+class A{};
+class B:public A{};
+
+class Person
+{
+public:
+	virtual A* f()
+	{
+		return new A;
+	}
+};
+class Student:public A
+{
+public:
+	virtual B* f()
+	{
+		return new B;
+	}
+};
+#endif
+
+#if 0
+class Person
+{
+public:
+	 virtual ~Person()
+	{
+		cout << "~Person()" << endl;
+	}
+};
+class Student :public Person
+{
+public:
+	 ~Student()
+	{
+		cout << "~Student()" << endl;
+	}
+};
+int main()
+{
+	Person* p1 = new Person;
+	Person* p2 = new Student;
+	delete p1;
+	delete p2;
+	return 0;
+}
+#endif
+
+#if 0
+class Car
+{
+public:
+	virtual void Drive()final{}
+};
+class Benz :public Car
+{
+public:
+	virtual void Drive()
+	{
+		cout << "comfortable" << endl;
+	}
+};
+void Func(Car& c)
+{
+	c.Drive();
+}
+int main()
+{
+	Car c;
+	Benz b;
+	Func(c);
+	Func(b);
+	return 0;
+}
+#endif
+
+#if 0
+class Car
+{
+public:
+	virtual void Drive()override{}
+};
+class Benz :public Car
+{
+public:
+	virtual void Drive()
+	{
+		cout << "comfortable" << endl;
+	}
+};
+void Func(Car& c)
+{
+	c.Drive();
+}
+int main()
+{
+	Car c;
+	Benz b;
+	Func(c);
+	Func(b);
+	return 0;
+}
+#endif
+
+#if 0
+class Car
+{
+public:
+	virtual void Drive() = 0;
+};
+class Benz :public Car
+{
+public:
+	virtual void Drive()
+	{
+		cout << "comfortable" << endl;
+	}
+};
+class BMW :public Car
+{
+public:
+	virtual void Drive()
+	{
+		cout << "play" << endl;
+	}
+};
+void Test()
+{
+	Car* pBenz = new Benz;
+	pBenz->Drive();
+	Car* pBMW = new BMW;
+	pBMW->Drive();
+}
+int main()
+{
+	Test();
+	return 0;
+}
+#endif
+
+#if 0
+class Base
+{
+public:
+	virtual void Func()
+	{
+		cout << "Func()" << endl;
+	}
+private:
+	int _b = 1;
+};
+int main()
+{
+	Base b;
+	cout << sizeof(b) << endl;
+	return 0;
+}
+#endif
+
+class Base
+{
+public:
+	virtual void Func1()
+	{
+		cout << "Base::Func1()" << endl;
+	}
+	virtual void Func2()
+	{
+		cout << "Base::Func2()" << endl;
+	}
+	void Func3()
+	{
+		cout << "Base::Func3()" << endl;
+	}
+private:
+	int _b = 1;
+};
+class Derive :public Base
+{
+public:
+	virtual void Func1()
+	{
+		cout << "Derive::Func1()" << endl;
+	}
+private:
+	int _d = 2;
+};
+int main()
+{
+	Base b;
+	Derive d;
+	return 0;
+}
