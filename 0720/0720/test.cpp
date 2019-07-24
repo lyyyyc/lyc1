@@ -528,6 +528,7 @@ int main()
 }
 #endif
 
+#if 0
 class Base
 {
 public:
@@ -562,3 +563,5 @@ int main()
 	Derive d;
 	return 0;
 }
+#endif
+

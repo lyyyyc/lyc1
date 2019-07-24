@@ -593,6 +593,7 @@ int main()
 0
 */
 
+#if 0
 class Solution 
 {
 public:    
@@ -625,5 +626,104 @@ public:
 			sum = sum *10 + str[i] - '0';                     
 		}        
 		return symbol * sum;    
+	} 
+}; 
+#endif
+
+/*标题：Fibonacci数列 | 时间限制：1秒 | 内存限制：32768K 
+Fibonacci数列是这样定义的：
+F[0] = 0
+F[1] = 1
+for each i ≥ 2: F[i] = F[i-1] + F[i-2]
+因此，Fibonacci数列就形如：0, 1, 1, 2, 3, 5, 8, 13, ...，
+在Fibonacci数列中的数我们称为Fibonacci数。给你一 个N，
+你想让其变为一个Fibonacci数，
+每一步你可以把当前数字X变为X-1或者X+1，
+现在给你一个数N求最少需要多少步可以变为Fibonacci数。 
+输入描述： 
+输入为一个正整数N(1 ≤ N ≤ 1,000,000) 
+输出描述： 
+输出一个最小的步数变为Fibonacci数" 
+示例1: 
+输入 
+15 
+输出 
+2
+*/
+
+#if 0
+#include <iostream> 
+using namespace std; 
+int main()
+{    
+	int N, f, l = 0,r = 0,f0 = 0,f1 = 1;    
+	cin >> N;    
+	while(1)
+	{        
+		f = f0 + f1;        
+		f0 = f1;        
+		f1 = f;        
+		//找到比N小且距离N最近的数，求出距离        
+		if(f < N)             
+			l = N-f;        
+		else        
+		{            
+			//找到比N大且距离N最近的数，求出距离            
+			r = f - N;            
+			break;        
+		}    
+	} 
+	//取最小距离    
+	if (l > r)
+		cout << r << endl;
+	else
+		cout << l << endl;
+	return 0; 
+}
+#endif
+
+/*标题：合法括号序列判断 | 时间限制：3秒 | 内存限制：32768K | 语言限制：[Python, C++, C#, Java] 
+对于一个字符串，请设计一个算法，判断其是否为一个合法的括号串。
+给定一个字符串A和它的长度n，
+请返回一个bool值代表它是否为一个合法的括号串。
+一个合法的括号串定义为：
+1.只包括括号字符；2.左括号和右括号一一对应
+测试样例：
+"(()())",6
+返回：true
+测试样例：
+"()a()()",7
+返回：false
+测试样例：
+"()(()()",7
+返回：false*/
+
+class Parenthesis 
+{
+public:    
+	bool chkParenthesis(string A, int n) 
+	{     
+		// write code here        
+		stack<char> sc;        
+		for (auto ele : A) 
+		{            
+			switch (ele) 
+			{                
+				case '(':                    
+				sc.push(ele);                    
+				break;                
+				case ')':                    
+				{                        
+					if (sc.empty() || sc.top() != '(')                            
+						return false;                        
+					else                            
+					sc.pop();                    
+				}                    
+				break;             
+				default:                 
+				return false;            
+			}        
+		}        
+		return true;    
 	} 
 }; 
