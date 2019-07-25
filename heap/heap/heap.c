@@ -86,6 +86,7 @@ int Greater(HPDataType left, HPDataType right)
 
 void InitHeap(Heap* hp, HPDataType* array, int size, PCOM compare)
 {
+
 	assert(hp);
 	hp->_array = (HPDataType*)malloc(sizeof(HPDataType) * size);
 	if (hp->_array == NULL)
@@ -174,7 +175,7 @@ void DestroyHeap(Heap* hp)
 void Test1()
 {
 	Heap hp;
-	int array[] = { 2,3,8,9,0,1,7,4,6,5 };
+	int array[] = { 2,3,8,9,10,1,7,4,6,5 };
 	InitHeap(&hp, array, sizeof(array) / sizeof(array[0]), Less);
 	printf("%d\n", HeapSize(&hp));
 	printf("%d\n", HeapTop(&hp));

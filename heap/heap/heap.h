@@ -29,5 +29,7 @@ int HeapEmpty(Heap* hp);
 HPDataType HeapTop(Heap* hp);
 void DestroyHeap(Heap* hp);
 
+void Test1();
+
 
 
