@@ -1,0 +1,6 @@
+﻿  SeqList.c
+C:\Users\liyuc\Desktop\git\lyc1\SeqList\SeqList\SeqList.c(25,21): warning C4018:  “<”: 有符号/无符号不匹配
+C:\Users\liyuc\Desktop\git\lyc1\SeqList\SeqList\SeqList.c(68,20): warning C4018:  “<”: 有符号/无符号不匹配
+SeqList.obj : error LNK2019: 无法解析的外部符号 _SeqListEmpty，该符号在函数 _SeqListPopBack 中被引用
+MSVCRTD.lib(exe_main.obj) : error LNK2019: 无法解析的外部符号 _main，该符号在函数 "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) 中被引用
+C:\Users\liyuc\Desktop\git\lyc1\SeqList\Debug\SeqList.exe : fatal error LNK1120: 2 个无法解析的外部命令
