@@ -19,10 +19,12 @@ SLDataType SeqListFind(SeqList* psl, SLDataType data);
 void SeqListInsert(SeqList* psl, size_t pos, SLDataType data);
 void SeqListErase(SeqList* psl, size_t pos);
 void SeqListRemove(SeqList* psl, SLDataType data);
+void SeqListAllRemove(SeqList* psl, SLDataType data);
 void  SeqListClear(SeqList* psl);
 SLDataType SeqListEmpty(SeqList* psl);
 SLDataType SeqListSize(SeqList* psl);
 SLDataType SeqListCapacity(SeqList* psl);
+void SeqListPrint(SeqList* psl);
 void SeqListDestory(SeqList* psl);
 
 void Test();
