@@ -361,6 +361,7 @@ int main()
 }
 #endif
 
+#if 0
 //归并排序
 void MergeData(int* array, int left, int mid, int right,int *tmp)
 {
@@ -455,6 +456,67 @@ int main()
 	int array[] = { 3,4,2,9,1,7,6,0,8,5 };
 	PrintArray(array, sizeof(array) / sizeof(array[0]));
 	MergeSortCir(array, sizeof(array) / sizeof(array[0]));
+	PrintArray(array, sizeof(array) / sizeof(array[0]));
+	return 0;
+}
+#endif
+
+
+//计数排序
+void CountSort(int* array, int size)
+{
+	//1.找数据范围
+	int minValue = array[0];
+	int maxValue = array[0];
+	for (int i = 1; i < size; ++i)
+	{
+		if (array[i] > maxValue)
+		{
+			maxValue = array[i];
+		}
+		if (array[i] < minValue)
+		{
+			minValue = array[i];
+		}
+	}
+	int range = maxValue - minValue + 1;
+	int* pCount = (int*)malloc(sizeof(int) * range);
+	memset(pCount, 0, sizeof(int) * range);
+	if (pCount == NULL)
+	{
+		assert(0);
+		return;
+	}
+	//2.统计每个元素出现的次数
+	for (int i = 0; i < size; ++i)
+	{
+		pCount[array[i]-minValue]++;//array数组的元素就是pCount数组的下标
+	}
+	//3.排序，对pCount中的元素进行回收
+	int index = 0;
+	for (int i = 0; i < range; ++i)
+	{
+		while (pCount[i])
+		{
+			array[index++] = i + minValue;
+			pCount[i]--;
+		}
+	}
+	free(pCount);
+}
+void PrintArray(int* array, int size)
+{
+	for (int i = 0; i < size; ++i)
+	{
+		cout << array[i] << " ";
+	}
+	cout << endl;
+}
+int main()
+{
+	int array[] = { 3,5,2,3,4,1,5,1,0,0,2};
+	PrintArray(array, sizeof(array) / sizeof(array[0]));
+	CountSort(array, sizeof(array) / sizeof(array[0]));
 	PrintArray(array, sizeof(array) / sizeof(array[0]));
 	return 0;
 }
