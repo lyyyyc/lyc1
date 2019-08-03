@@ -655,7 +655,7 @@ int main()
 }
 #endif
 
-
+#if 0
 //ÅäÖÃÉ¾³ıÆ÷
 //new
 template<class T>
@@ -781,5 +781,83 @@ void TestSharedPtr()
 int main()
 {
 	TestSharedPtr();
+	return 0;
+}
+#endif
+
+#if 0
+#include<iostream>
+#include<string>
+#include<stdio.h>
+
+using namespace std;
+
+int main()
+{
+	char s1[26] = { 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
+	string s2;
+	while (getline(cin, s2))
+	{
+		int i;
+		int j;
+		for (i = 0; i < s2.size(); ++i)
+		{
+			if (s2[i] == ' ')
+			{
+				cout << ' ' ;
+			}
+			else
+			{
+				for (j = 0; j < 26; ++j)
+				{
+					if (s1[j] == s2[i])
+					{
+						break;
+					}
+				}
+				if (j >= 5)
+				{
+					cout << s1[j - 5];
+				}
+				else
+				{
+					cout << s1[j + 21];
+				}
+			}
+		}
+		cout << endl;
+	}
+	return 0;
+}
+#endif
+
+#include<iostream>
+#include<math.h>
+
+using namespace std;
+
+int main()
+{
+	int n, i, k;
+	while (cin >> n)
+	{
+		k = 0;
+		for (i = 2; i <= sqrt(n); ++i)
+		{
+			if (n % i == 0)
+			{
+				while (n % i == 0)
+				{
+					n /= i;
+				}
+				k++;
+			}
+		}
+		if (n != 1)
+		{
+			k++;
+		}
+		cout << k << endl;
+	}
 	return 0;
 }
