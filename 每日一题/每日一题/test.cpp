@@ -2107,6 +2107,7 @@ txt12.xls
 false
 */
 
+#if 0
 #include<iostream>
 #include<string>
 
@@ -2153,3 +2154,228 @@ int main()
 	}
 	return 0;
 }
+#endif
+
+/*标题：汽水瓶 | 时间限制：1秒 | 内存限制：32768K 
+有这样一道智力题：“某商店规定：三个空汽水瓶可以换一瓶汽水。
+小张手上有十个空汽水瓶，她最多可以换多少瓶汽水喝？”答案是5瓶，
+方法如下：先用9个空瓶子换3瓶汽水，喝掉3瓶满的，喝完以后4个空瓶子，
+用3 个再换一瓶，喝掉这瓶满的，这时候剩2个空瓶子。
+然后你让老板先借给你一瓶汽水，喝掉这瓶满的，
+喝完以后用3个空瓶子换一瓶满的还给老板。如果小张手上有n个空汽水瓶，
+最多可以换多少瓶汽水喝？
+输入描述： 
+输入文件最多包含10组测试数据，每个数据占一行，
+仅包含一个正整数n（1<=n<=100），表示小张手上的空汽水瓶数。
+n=0表示输入结束，你的程序不应当处理这一行。
+输出描述：
+对于每组测试数据，输出一行，表示最多可以喝的汽水瓶数。
+如果一瓶也喝不到，输出0。
+示例1: 
+输入 
+3 
+10 
+81 
+0
+输出 
+1
+5 
+40
+*/
+
+#if 0
+#include<iostream>
+
+using namespace std;
+
+int calculateNum(int num)
+{
+	int sum = 0;
+	while (num > 1)
+	{
+		int result = num / 3;
+		int reminder = num % 3;
+		sum += result;
+		num = result + reminder;
+		if (num == 2)
+		{
+			++sum;
+			break;
+		}
+	}
+	return sum;
+}
+int main()
+{
+	int n;
+	while (cin >> n)
+	{
+		cout << calculateNum(n) << endl;;
+	}
+	return 0;
+}
+#endif
+
+/*标题：查找两个字符串a,b中的最长公共子串 | 时间限制：1秒 | 内存限制：32768K 
+查找两个字符串a,b中的最长公共子串。若有多个，
+输出在较短串中最先出现的那个。 
+输入描述： 
+输入两个字符串 
+输出描述： 
+返回重复出现的字符 
+示例1: 
+输入 
+abcdefghijklmnop 
+abcsafjklmnopqrstuvw 
+输出 
+jklmnop
+*/
+
+#if 0
+#include<iostream>
+#include<string>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+
+int main()
+{
+	string str1, str2;
+	while (cin >> str1 >> str2)
+	{
+		if (str1.size() > str2.size())
+		{
+			swap(str1, str2);
+		}
+		int len1 = str1.size(), len2 = str2.size();
+		int i, j, start = 0, max = 0;
+		vector<vector<int>>MCS(len1 + 1, vector<int>(len2 + 1, 0));
+		for (int i = 1; i < len1; ++i)
+		{
+			for (int j = 1; j < len2; ++j)
+			{
+				if (str1[i - 1] == str2[j - 1])
+				{
+					MCS[i][j] = MCS[i - 1][j - 1] + 1;
+				}
+				if (MCS[i][j] > max)
+				{
+					max = MCS[i][j];
+					start = i - max;
+				}
+			}
+		}
+		cout << str1.substr(start, max) << endl;
+	}
+	return 0;
+}
+#endif
+
+/*标题：字符串反转 | 时间限制：1秒 | 内存限制：32768K 
+写出一个程序，接受一个字符串，然后输出该字符串反转后的字符串。
+例如：
+输入描述： 
+输入N个字符
+输出描述： 
+输出该字符串反转后的字符串
+示例1: 
+输入 
+abcd
+输出 
+dcba
+*/
+
+#if 0
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+string reserveString(string s)
+{
+	if (s.empty())
+	{
+		return s;
+	}
+	size_t start = 0;
+	size_t end = s.size() - 1;
+	while (start < end)
+	{
+		swap(s[start], s[end]);
+		start++;
+		end--;
+	}
+	return s;
+}
+int main()
+{
+	string s;
+	getline(cin, s);
+	cout << reserveString(s) << endl;
+	return 0;
+}
+#endif
+
+/*标题：公共字串计算 | 时间限制：1秒 | 内存限制：32768K 
+题目标题：
+计算两个字符串的最大公共字串的长度，字符不区分大小写
+详细描述：
+接口说明
+原型：
+int getCommonStrLength(char * pFirstStr, char * pSecondStr);
+输入参数：
+     char * pFirstStr //第一个字符串
+     char * pSecondStr//第二个字符串
+输入描述： 
+输入两个字符串
+输出描述： 
+输出一个整数
+示例1: 
+输入 
+asdfas werasdfaswer 
+输出 
+6
+*/
+
+#include<iostream> 
+#include<string>
+#include<vector> 
+using namespace std;
+
+int main() 
+{
+	int max = 0;  
+	//max初值.    
+	string str1, str2;  
+	while (cin >> str1 >> str2) 
+	{      
+		int len1 = str1.size();    
+		int len2 = str2.size();      
+		int max = 0; 
+		//所有值初始化为0  
+		vector<vector<int>> dp(len1, vector<int>(len2, 0));     
+		//计算dp       
+		for (int i = 0; i < len1; i++)   
+		{          
+			for (int j = 0; j < len2; j++)     
+			{         
+				//如果当前结尾的字符相等，则在dp[i-1][j-1]的基础上加1  
+				if (str1[i] == str2[j])            
+				{               
+					if (i >= 1 && j >= 1)      
+						dp[i][j] = dp[i - 1][j - 1] + 1;         
+					else              
+						//dp[i][0] or dp[0][j]           
+						dp[i][j] = 1;             
+				}      
+				//更新最大值         
+				if (dp[i][j] > max)           
+					max = dp[i][j];        
+			}     
+		}    
+		cout << max << endl; 
+	} 
+	return 0;
+}
+
