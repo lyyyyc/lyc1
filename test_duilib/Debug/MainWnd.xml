@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="1097,686">
+    <HorizontalLayout width="1099" height="688" bkcolor="#FFA6CAF0">
+        <HorizontalLayout width="1097" height="41" bkcolor="#FF000080">
+            <Button text="-" float="true" pos="992,10,0,0" width="33" height="25" bkcolor="#FFA6CAF0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+            <Button text="x" float="true" pos="1044,10,0,0" width="33" height="25" bkcolor="#FFA6CAF0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+        </HorizontalLayout>
+    </HorizontalLayout>
+</Window>

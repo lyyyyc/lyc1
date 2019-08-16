@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="393,208">
+    <HorizontalLayout width="393" height="208" bkcolor="#FFA6CAF0">
+        <HorizontalLayout width="396" height="40" bkcolor="#FF000080">
+            <Button name="BIN_MIN" text="-" float="true" pos="312,9,0,0" width="33" height="25" bkcolor="#FFA6CAF0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+            <Button name="BIN_CLOSE" text="x" float="true" pos="349,9,0,0" width="33" height="25" bkcolor="#FFA6CAF0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+        </HorizontalLayout>
+        <Edit name="EDIT_USER_NAME" float="true" pos="129,81,0,0" width="163" height="30" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+        <Edit name="EDIT_USER_PASSWORD" float="true" pos="130,118,0,0" width="163" height="30" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" password="true" />
+        <Button name="BIN_LOGIN" text="登录" float="true" pos="161,156,0,0" width="80" height="32" bkcolor="#FF0080FF" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+        <Text name="EDIT_USER_name" text="用户名" float="true" pos="61,80,0,0" width="63" height="30" bkcolor="#FF808080" textpadding="2,0,2,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="wrap" />
+        <Text name="EDIT_USER_password" text="密码" float="true" pos="61,118,0,0" width="63" height="30" bkcolor="#FF808080" textpadding="2,0,2,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="wrap" />
+    </HorizontalLayout>
+</Window>
