@@ -461,7 +461,7 @@ int main()
 }
 #endif
 
-
+#if 0
 //¼ÆÊıÅÅĞò
 void CountSort(int* array, int size)
 {
@@ -517,6 +517,177 @@ int main()
 	int array[] = { 3,5,2,3,4,1,5,1,0,0,2};
 	PrintArray(array, sizeof(array) / sizeof(array[0]));
 	CountSort(array, sizeof(array) / sizeof(array[0]));
+	PrintArray(array, sizeof(array) / sizeof(array[0]));
+	return 0;
+}
+#endif
+
+#if 0
+//Ã°ÅİÅÅĞò
+void BubbleSort(int* array,int size)
+{
+	for (int i = 0; i < size; ++i)
+	{
+		for (int j = 0; j < size - 1; ++j)
+		{
+			if (array[j] > array[j + 1])
+			{
+				swap(array[j], array[j + 1]);
+			}
+		}
+	}
+}
+void PrintArray(int* array, int size)
+{
+	for (int i = 0; i < size; ++i)
+	{
+		cout << array[i] <<" ";
+	}
+	cout << endl;
+}
+int main()
+{
+	int array[10] = { 0,2,1,4,5,3,9,8,6,7 };
+	BubbleSort(array, sizeof(array) / sizeof(array[0]));
+	PrintArray(array, sizeof(array) / sizeof(array[0]));
+	return 0;
+}
+#endif
+
+#if 0
+//²åÈëÅÅĞò
+void InsertSort(int* array, int size)
+{
+	for (int i = 1; i < size; ++i)
+	{
+		int key = array[i];
+		int end = i - 1;
+		while (end >= 0 && key < array[end])
+		{
+			array[end + 1] = array[end];
+			end--;
+		}
+		array[end + 1] = key;
+	}
+}
+void PrintArray(int* array, int size)
+{
+	for (int i = 0; i < size; ++i)
+	{
+		cout << array[i] << ' ';
+	}
+	cout << endl;
+}
+int main()
+{
+	int array[10] = { 0,2,1,4,5,3,9,8,6,7 };
+	InsertSort(array, sizeof(array) / sizeof(array[0]));
+	PrintArray(array, sizeof(array) / sizeof(array[0]));
+	return 0;
+}
+#endif
+
+void InsertSort(int* array, int size)
+{
+	for (int i = 0; i < size; ++i)
+	{
+		int key = array[i];
+		int end = i - 1;
+		while (end >= 0 && key < array[end])
+		{
+			array[end + 1] = array[end];
+			end--;
+		}
+		array[end + 1] = key;
+	}
+}
+int GetMiddle(int* array, int left, int right)
+{
+	int mid = left + (right - left) / 2;
+	if (array[left] < array[right - 1])
+	{
+		if (array[mid] > array[left])
+		{
+			return left;
+		}
+		else if (array[mid] < array[right - 1])
+		{
+			return right - 1;
+		}
+		else
+		{
+			return mid;
+		}
+	}
+	else
+	{
+		if (array[mid] > array[left])
+		{
+			return left;
+		}
+		else if (array[mid] < array[right - 1])
+		{
+			return right - 1;
+		}
+		else
+		{
+			return mid;
+		}
+	}
+}
+int Hoare(int* array, int left, int right)
+{
+	int begin = left;
+	int end = right - 1;
+	int mid = GetMiddle(array, left, right);
+	swap(array[mid], array[right - 1]);
+	int key = array[right - 1];
+	while (begin < end)
+	{
+		while (begin < end && array[begin] <= key)
+		{
+			begin++;
+		}
+		while (begin<end && array[end]>=key)
+		{
+			end--;
+		}
+		if (begin != end)
+		{
+			swap(array[begin], array[end]);
+		}
+	}
+	if (begin != right - 1)
+	{
+		swap(array[begin], array[right - 1]);
+	}
+	return begin;
+}
+void QuickSort(int* array, int left, int right)
+{
+	if (right - left < 16)
+	{
+		InsertSort(array, right - left);
+	}
+	else
+	{
+		int div = Hoare(array, left, right);
+		QuickSort(array, left, div);
+		QuickSort(array, div+1, right);
+	}
+}
+void PrintArray(int* array, int size)
+{
+	for (int i = 0; i < size; ++i)
+	{
+		cout << array[i] << ' ';
+	}
+	cout << endl;
+}
+int main()
+{
+	int array[20] = { 0,2,1,4,5,3,9,8,6,7,10,19,17,16,18,12,15,13,14,11 };
+	QuickSort(array, 0,sizeof(array) / sizeof(array[0]));
 	PrintArray(array, sizeof(array) / sizeof(array[0]));
 	return 0;
 }
