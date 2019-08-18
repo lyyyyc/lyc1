@@ -1,2 +1,2 @@
 ﻿  test.cpp
-  每日一题.vcxproj -> C:\Users\liyuc\Desktop\git\lyc1\每日一题\Debug\每日一题.exe
+LINK : fatal error LNK1104: 无法打开文件“C:\Users\liyuc\Desktop\git\lyc1\每日一题\Debug\每日一题.exe”
