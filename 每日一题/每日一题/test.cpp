@@ -3173,3 +3173,63 @@ int main()
 	return 0;
 }
 #endif
+
+/*标题：不用加减乘除做加法 | 时间限制：1秒 | 内存限制：32768K | 语言限制：[Javascript_V8, Python, C++, Javascript, Php, C#, Java] 
+写一个函数，求两个整数之和，
+要求在函数体内不得使用+、-、*、/四则运算符号。*/
+
+#if 0
+class Solution {
+public:
+	int Add(int num1, int num2) {
+	while (num2 != 0) {
+		int sum = num1 ^ num2;        
+		//得到相加后不包含进位的数据     
+		int carray = (num1 & num2) << 1;  
+		//得到两数相加的进位          
+		num1 = sum;                   
+		//两个结果相加，直到进位为0    
+		num2 = carray;
+	}
+	return num1;
+	} 
+};
+#endif
+
+/*标题：三角形 | 时间限制：1秒 | 内存限制：32768K 
+给定三条边，请你判断一下能不能组成一个三角形。 
+输入描述： 
+输入包含多组数据，每组数据包含三个正整数a、b、c（1≤a, b, c≤10^100）。 
+输出描述： 
+对应每一组数据，如果它们能组成一个三角形，则输出“Yes”；
+否则，输出“No”。 
+示例1:
+输入 
+1 2 3 
+2 2 2 
+输出 
+No 
+Yes
+*/
+
+#include <iostream> 
+#include <string> 
+#define ADD(x, y) ((x) + (y)) 
+#define CMP(x, y) ((x) > (y)) 
+int main()
+{
+	double a, b, c;
+	while (std::cin >> a >> b >> c) 
+	{
+		//对两边进行求和与第三遍进行比较   
+		if (CMP(ADD(a, b), c) && CMP(ADD(b, c), a) && CMP(ADD(a, c), b))
+		{
+			std::cout << "Yes" << std::endl;
+		}
+		else
+		{
+			std::cout << "No" << std::endl;
+		}
+	}
+	return 0; 
+}
