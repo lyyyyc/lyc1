@@ -3212,6 +3212,7 @@ No
 Yes
 */
 
+#if 0
 #include <iostream> 
 #include <string> 
 #define ADD(x, y) ((x) + (y)) 
@@ -3232,4 +3233,503 @@ int main()
 		}
 	}
 	return 0; 
+}
+#endif
+
+/*标题：奇数位上都是奇数或者偶数位上都是偶数 | 时间限制：1秒 | 内存限制：32768K | 语言限制：[C++, Java] 
+给定一个长度不小于2的数组arr。 写一个函数调整arr，
+使arr中要么所有的偶数位上都是偶数，要么所有的奇 数位上都是奇数上。 
+要求：如果数组长度为N，时间复杂度请达到O(N)，
+额外空间复杂度请达到O(1),下标 0,2,4,6...算作偶数位,下标1,3,5,7...算作奇数位，
+例如[1,2,3,4]调整为[2,1,4,3]即可*/
+
+#if 0
+class Solution {
+public:    void oddInOddEvenInEven(std::vector<int>& arr, int len) {
+	long i = 0, j = 1;      
+	while (i < len && j < len)
+	{
+		if ((arr[i] % 2) == 0)
+		{
+			i += 2; continue;
+		}
+		//偶数位上寻找非偶数   
+		if((arr[j] % 2) != 0) 
+		{ 
+			j += 2; continue; 
+		}
+		//奇数位上寻找非奇数     
+		swap(arr[i], arr[j]);  
+	}  
+} 
+};
+#endif
+
+/*标题：猴子分桃 | 时间限制：1秒 | 内存限制：32768K 
+老猴子辛苦了一辈子，给那群小猴子们留下了一笔巨大的财富——一大堆桃子。
+老猴子决定把这些桃子分给小猴子。
+第一个猴子来了，它把桃子分成五堆，五堆一样多，但还多出一个。
+它把剩下的一个留给老猴子，自己拿走
+其中的一堆。
+第二个猴子来了，它把桃子分成五堆，五堆一样多，但又多出一个。
+它把多出的一个留给老猴子，自己拿走其中的一堆。
+后来的小猴子都如此照办。最后剩下的桃子全部留给老猴子。
+这里有n只小猴子，请你写个程序计算一下在开始时至少有多少个桃子，
+以及最后老猴子最少能得到几个桃子。
+输入描述： 
+输入包括多组测试数据。 每组测试数据包括一个整数n(1≤n≤20)。
+输入以0结束，该行不做处理。
+输出描述： 
+每组测试数据对应一行输出。 包括两个整数a，b。 
+分别代表开始时最小需要的桃子数，和结束后老猴子最少能得到的桃子数。 
+示例1:
+输入 
+5 
+1 
+0 
+输出 
+3121 1025 
+1 1
+*/
+
+#if 0
+#include <iostream> 
+#include <string> 
+#include <math.h>
+
+int main()
+{
+	int n;
+	while (std::cin >> n) 
+	{ 
+		if (n == 0) 
+			break;
+		long total = pow(5, n) - 4;
+		long left = pow(4, n) + n - 4;
+		std::cout << total << " " << left << std::endl; }
+	return 0;
+}
+#endif
+
+/*标题：求正数数组的最小不可组成和 | 时间限制：1秒 | 内存限制：32768K | 语言限制：[C++, Java] 
+给定一个全是正数的数组arr，定义一下arr的最小不可组成和的概念： 
+1，arr的所有非空子集中，把每个子集内的所有元素加起来会出现很多的值，
+其中最小的记为min，最大的记为max； 
+2，在区间[min,max]上，如果有一些正数不可以被arr某一个子集相加得到，
+那么这些正数中最小的那个，就 是arr的最小不可组成和； 
+3，在区间[min,max]上，如果所有的数都可以被arr的某一个子集相加得到，
+那么max+1是arr的最小不可组成和； 
+举例： arr = {3,2,5} arr的min为2，max为10，在区间[2,10]上，
+4是不能被任何一个子集相加得到的值中最小的，
+所以4是arr的最小不可组成和； 
+arr = {3,2,4} arr的min为2，max为9，在区间[2,9]上，
+8是不能被任何一个子集相加得到的值中最小的，
+所以8是arr的最小不可组成和； 
+arr = {3,1,2} arr的min为1，max为6，在区间[2,6]上，
+任何数都可以被某一个子集相加得到，
+所以7是arr的最小不可 组成和； 
+请写函数返回arr的最小不可组成和。*/
+
+#if 0
+#include <iostream> 
+#include <vector>
+
+class Solution 
+{
+public:
+	int getFirstUnFormedNum(std::vector<int>& arr, int length) 
+	{
+		int sum = 0, min = arr[0];
+		int i, j;
+		for (int i = 0; i < length; i++) 
+		{ 
+			sum += arr[i];
+			min = arr[i] < min ? arr[i] : min; 
+		}
+		std::vector<int> dp(sum + 1, 0);
+		for (i = 0; i < length; i++) 
+		{
+			//有length个数据--有length个阶段    
+			//{2， 3， 5}       
+			//i=0--d[10]=2 d[9]=2 d[8]=2 d[7]=2...d[2]=2         
+			//i=1--d[10]=5 d[9]=5...d[5]=5 d[4]=3 d[3]=3     
+			//i=2--d[10]=10 d[9]=8 d[8]=8 d[7]=7 d[6]=5 d[5]=5       
+			for(j = sum; j >= arr[i]; j--)
+			{ 
+				//逆序判断背包承重中能够放入的数据     
+				//当数组中只有2的时候，背包承重从2-10都可以放入2的数值     
+				//当数组中放入2和3的时候，背包承重从5-10可以放入5，3-4放入3，2只能放入2 
+				//当数组中放入2，3，5时，背包承重10放入10，8-9放入8，7放入7，5-6放入5...                
+				//dp[j-arr[i]]意思是背包承重为j时，如果已经放置了arr[i]的重量后还能放置的最大重量                
+				if (dp[j] < dp[j - arr[i]] + arr[i])
+					//对每个承重计算当前最大能放置重量      
+					dp[j] = dp[j - arr[i]]+ arr[i];
+				//更新背包中能够放入的最大值        
+				else
+					dp [j] = dp[j];
+			}
+		}
+		//最后当承重为n时，放入的重量不为n则认为是最大不可求和  
+		for (i = min; i <= sum; i++)
+		{
+			if (i != dp[i])
+				return  i;
+		}
+		return sum + 1;
+	} 
+};
+#endif
+
+/*标题：有假币 | 时间限制：1秒 | 内存限制：32768K 
+居然有假币！ 现在猪肉涨了，但是农民的工资却不见涨啊，
+没钱怎么买猪肉啊。nowcoder这就去买猪肉，结果找来的零钱中有假币！！！
+可惜nowcoder 一不小心把它混进了一堆真币里面去了。
+只知道假币的重量比真币的质量要轻，
+给你一个天平（天平两端能容纳无限个硬币），
+请用最快的时间把那个可恶的假币找出来。 
+输入描述： 
+1≤n≤2^30,输入0结束程序。 
+输出描述： 
+最多要称几次一定能把那个假币找出来？ 
+示例1: 
+输入 
+3 
+12 
+0 
+输出 
+1 
+3
+*/
+
+#if 0
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	int n;
+	while (cin >> n && n)
+	{
+		if (n == 0)
+		{
+			break;
+		}
+		int cnt = 0;
+		while (n >= 2)
+		{
+			if (n % 3)
+			{
+				n = n / 3 + 1;
+			}
+			else
+			{
+				n /= 3;
+			}
+			cnt++;
+		}
+		cout << cnt << endl;
+	}
+	return 0;
+}
+#endif
+
+/*标题：最难的问题 | 时间限制：1秒 | 内存限制：32768K 
+NowCoder生活在充满危险和阴谋的年代。为了生存，他首次发明了密码，
+用于军队的消息传递。假设你是 军团中的一名军官，
+需要把发送来的消息破译出来、并提供给你的将军。
+消息加密的办法是：对消息原文中的每个字母，
+分别用该字母之后的第5个字母替换
+（例如：消息原文中的每个字母A都分别替换成字母F），其他字符不 变，
+并且消息原文的所有字母都是大写的。
+密码中的字母与原文中的字母对应关系如下。
+密码字母：A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+原文字母：V W X Y Z A B C D E F G H I J K L M N O P Q R S T U
+输入描述： 
+输入包括多组数据，每组数据一行，为收到的密文。 
+密文仅有空格和大写字母组成。 
+输出描述： 
+对应每一组数据，输出解密后的明文。 
+示例1: 
+输入 HELLO WORLD 
+SNHJ 
+输出 
+CZGGJ RJMGY 
+NICE
+*/
+
+#if 0
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+	string s;
+	while (getline(cin, s))
+	{
+		for (int i = 0; i < s.size(); ++i)
+		{
+			if (s[i] >= 'A' && s[i] <= 'E')
+			{
+				s[i] += 21;
+			}
+			else if (s[i] >= 'F' && s[i] <= 'Z')
+			{
+				s[i] -= 5;
+			}
+		}
+		cout << s << endl;
+	}
+	return 0;
+}
+#endif
+
+/*因子个数 | 时间限制：1秒 | 内存限制：32768K 
+一个正整数可以分解成一个或多个数组的积。例如36=2*2*3*3，
+即包含2和3两个因子。NowCoder最近在研究因子个数的分布规律，
+现在给出一系列正整数，他希望你开发一个程序输出每个正整数的因子个数。 
+输入描述： 
+输入包括多组数据。 每组数据仅有一个整数n (2≤n≤100000)。 
+输出描述：
+对应每个整数，输出其因子个数，每个结果占一行。 
+示例1: 
+输入 
+30 
+26 
+20 
+输出 
+3 
+2 
+2
+*/
+
+#if 0
+#include<iostream>
+#include<math.h>
+
+using namespace std;
+
+int main()
+{
+	int num;
+	while (cin >> num)
+	{
+		int i=2, k=0;
+		for (; i <=sqrt(num); ++i)
+		{
+			if (num % i == 0)
+			{
+				while (num % i == 0)
+				{
+					num /= i;
+				}
+				++k;
+			}
+		}
+		if (num != 1)
+		{
+			++k;
+		}
+		cout << k << endl;
+	}
+	return 0;
+}
+#endif
+
+/*标题：美国节日 | 时间限制：1秒 | 内存限制：32768K 
+和中国的节日不同，美国的节假日通常是选择某个月的第几个星期几这种形式，
+因此每一年的放假日期都不 相同。具体规则如下：
+* 1月1日：元旦
+* 1月的第三个星期一：马丁·路德·金纪念日
+* 2月的第三个星期一：总统节
+* 5月的最后一个星期一：阵亡将士纪念日
+* 7月4日：美国国庆
+* 9月的第一个星期一：劳动节
+* 11月的第四个星期四：感恩节
+* 12月25日：圣诞节
+现在给出一个年份，请你帮忙生成当年节日的日期。
+输入描述： 
+输入包含多组数据，每组数据包含一个正整数year（2000≤year≤9999）。 
+输出描述： 
+对应每一组数据，以“YYYY-MM-DD”格式输出当年所有的节日日期，
+每个日期占一行。
+每组数据之后输出一个空行作为分隔。 
+示例1: 
+输入 
+2014 
+2013 
+输出 
+2014-01-01 
+2014-01-20 
+2014-02-17 
+2014-05-26 
+2014-07-04 
+2014-09-01 
+2014-11-27 
+2014-12-25
+
+2013-01-01 
+2013-01-21 
+2013-02-18 
+2013-05-27 
+2013-07-04 
+2013-09-02 
+2013-11-28 
+2013-12-25
+*/
+
+#if 0
+#include <iostream>
+#include <cstdio> 
+// 根据 年-月-日 通过蔡勒公式计算当前星期几 
+// 1: 星期一 ... 7: 星期日 
+int day_of_week(int year, int month, int day) 
+{    
+	if (month == 1 || month == 2)    
+	{        
+		month += 12;        
+		year -= 1;    
+	}
+
+	int century = year / 100;    
+	year %= 100;    
+	int week = year + (year / 4) + (century / 4) - 2 * century + 26 * (month + 1) / 10 + day - 1;    
+	week = (week % 7 + 7) % 7;
+
+	if (week == 0) 
+	{ 
+		week = 7; 
+	}
+
+	return week; 
+}
+
+int day_of_demand(int year, int month, int count, int d_of_week) 
+{
+	int week = day_of_week(year, month, 1); 
+	//求出1号星期数    
+	// 1 + 7(n - 1) + (所求星期数 + 7 - 1号星期数) % 7    
+	int day = 1 + (count - 1) * 7 + (7 + d_of_week - week) % 7;    
+	return day; 
+}
+
+// 元旦 
+void new_year_day(int year) 
+{    
+	printf("%d-01-01\n", year); 
+}
+
+// 马丁·路德·金纪念日（1月的第三个星期一） 
+void martin_luther_king_day(int year) 
+{    
+	printf("%d-01-%02d\n", year, day_of_demand(year, 1, 3, 1)); 
+}
+
+// 总统日（2月的第三个星期一） 
+void president_day(int year) 
+{    
+	printf("%d-02-%02d\n", year, day_of_demand(year, 2, 3, 1)); 
+}
+
+// 阵亡将士纪念日（5月的最后一个星期一）
+void memorial_day(int year)
+{    
+	// 从 6 月往前数    
+	int week = day_of_week(year, 6, 1);    
+	// 星期一的话，从 31 号往前数 6 天，否则，数 week - 2 天    
+	int day = 31 - ((week == 1) ? 6 : (week - 2));    
+	printf("%d-05-%02d\n", year, day); 
+}
+
+// 国庆 
+void independence_day(int year) 
+{    
+	printf("%d-07-04\n", year); 
+}
+
+// 劳动节（9月的第一个星期一） 
+void labor_day(int year) 
+{    
+	printf("%d-09-%02d\n", year, day_of_demand(year, 9, 1, 1)); 
+}
+
+// 感恩节（11月的第四个星期四） 
+void thanks_giving_day(int year) 
+{    
+	printf("%d-11-%02d\n", year, day_of_demand(year, 11, 4, 4)); 
+}
+
+// 圣诞节 
+void christmas(int year) 
+{    
+	printf("%d-12-25\n", year); 
+}
+
+// 美国节日 
+void holiday_of_usa(int year) 
+{    
+	new_year_day(year);    
+	martin_luther_king_day(year);    
+	president_day(year);    
+	memorial_day(year);    
+	independence_day(year);    
+	labor_day(year);    
+	thanks_giving_day(year);    
+	christmas(year); 
+}
+
+int main() 
+{
+	int year;   
+	while (std::cin >> year) 
+	{
+		holiday_of_usa(year);        
+		putchar('\n');
+	}
+	return 0;
+}
+#endif
+
+/*标题：分解因数 | 时间限制：1秒 | 内存限制：32768K 
+所谓因子分解，就是把给定的正整数a，分解成若干个素数的乘积，
+即 a = a1 × a2 × a3 × ... × an,并且 1 < a1 ≤ a2 ≤ a3 ≤ ... ≤ an。
+其中a1、a2、...、an均为素数。 先给出一个整数a，请输出分解后的因子。 
+输入描述： 
+输入包含多组数据，每组数据包含一个正整数a（2≤a≤1000000）。 
+输出描述： 
+对应每组数据，以“a = a1 * a2 * a3...”的形式输出因式分解后的结果。 
+示例1: 
+输入 
+10 
+18 
+输出 
+10 = 2 * 5 
+18 = 2 * 3 * 3
+*/
+
+#include<cstdio>
+#include<math.h>
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	int n;
+	while (cin >> n)
+	{
+		printf("%d=",n);
+		for (int i = 2; i <= sqrt(n); ++i)
+		{
+			while (n % i == 0 && n != 1)
+			{
+				printf("%u*", i);
+				n /= i;
+			}
+		}
+		printf("%d\n", n);
+	}
+	return 0;
 }
